@@ -1,0 +1,19 @@
+html
+  head
+    title= 'list'
+    link(rel='stylesheet', type='text/css', href='/public/style.css') 
+  body
+    table
+      thead
+        tr
+          th Name
+          th ID
+          th Age
+          th Score
+      tbody
+        each s in students
+          tr
+            td= s.name
+            td= s.id
+            td= s.age
+            td= s.score

@@ -1,0 +1,39 @@
+html
+  head
+    title= 'Profile'
+    link(rel='stylesheet', type='text/css', href='/public/style.css') 
+  body
+    h1 Student Profile
+    form(action="/add" method="post")
+        input(type="text" name="name" placeholder="Name" required)
+        input(type="number" name="age" placeholder="Age" required)
+        input(type="number" name="id" placeholder="ID" required)
+        input(type="number" name="score" placeholder="Score" required)
+        button(type="submit") Add
+    form(action="/edit" method="post")
+        input(type="number" name="id" placeholder="ID to Edit" required)
+        input(type="text" name="name" placeholder="New Name" required)
+        input(type="number" name="age" placeholder="New Age" required)
+        input(type="number" name="score" placeholder="New Score" required)
+        button(type="submit") Edit
+    form(action="/delete" method="post")
+        input(type="number" name="id" placeholder="ID to Delete" required)
+        button(type="submit") Delete
+    form(action="/view" method="get")
+        input(type="number" name="id" placeholder="ID to View" required)
+        button(type="submit") View
+    h2 All Students
+    table
+      thead
+        tr
+          th Name
+          th ID
+          th Age
+          th Score
+      tbody
+        each s in students
+          tr
+            td= s.name
+            td= s.id
+            td= s.age
+            td= s.score

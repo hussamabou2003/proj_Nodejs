@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="css/pico.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+            width: 50%;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1.headt {
+            display: flex;
+            justify-content: center;
+        }
+        
+        main {
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #formsContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        #addForm {
+            margin-right: 5cm;
+        }
+        
+        input,
+        button {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        
+        #lowerSection {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        #lowerSection>div {
+            flex: 1;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <article data-theme="dark">
+        <main>
+            <h1 class="headt">Student Profile</h1>
+            <div id="formsContainer">
+                <form id="addForm" action="/add" method="post">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="number" name="age" placeholder="Age" required>
+                    <input type="number" name="id" placeholder="ID" required>
+                    <input type="number" name="score" placeholder="Score" required>
+                    <button type="submit">Add</button>
+                </form>
+                <form id="editForm" action="/edit" method="post">
+                    <input type="number" name="id" placeholder="ID to Edit" required>
+                    <input type="text" name="name" placeholder="New Name" required>
+                    <input type="number" name="age" placeholder="New Age" required>
+                    <input type="number" name="score" placeholder="New Score" required>
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+            <form id="deleteForm" action="/delete" method="post">
+                <input type="number" name="id" placeholder="ID to Delete" required>
+                <button type="submit" class="secondary">Delete</button>
+            </form>
+            <form id="viewForm" action="/view" method="get">
+                <input type="number" name="id" placeholder="ID to View" required>
+                <button type="submit" class="secondary">View</button>
+            </form>
+            <div id="lowerSection">
+                <div>
+                    <h2>All Students</h2>
+                    <div id="studentsList"></div>
+                </div>
+                <div>
+                    <h2>Student Details</h2>
+                    <div id="studentDetails"></div>
+                </div>
+                <div>
+                    <h2>Status</h2>
+                    <div id="status"></div>
+                </div>
+            </div>
+            <script src="/public/script.js"></script>
+        </main>
+    </article>
+</body>
+
+</html>
