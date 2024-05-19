@@ -1,0 +1,39 @@
+html
+  head
+    title= 'Profile'
+    //- link(rel='stylesheet', type='text/css', href='/static/style.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css')
+    
+  body
+  nav 
+      h1 Student Profile
+  main 
+      form(action='/add', method='post')      
+        label(for='name') Name
+        input(type='text' name='name' required)
+
+        label(for='age') Age
+        input(type='number' name='age' required)
+
+        label(for='id') ID
+        input(type='number' name='id' required)
+
+        label(for='score') Score
+        input(type='number' name='score' required)
+        button(type='submit') Add Student
+      h2   Students Table
+      table
+        thead
+          tr
+            th Name
+            th ID
+            th Age
+            th Score
+        tbody
+          each s in students
+            tr
+              td
+                a(href='/students/'+s.id)= s.name
+              td= s.id
+              td= s.age
+              td= s.score

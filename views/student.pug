@@ -1,0 +1,30 @@
+html
+  head
+    title= 'Profile'
+    //- link(rel='stylesheet', type='text/css', href='/static/style.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css')
+
+  body
+  nav 
+    h1='Student' +'__'+ student.name
+    a(href='/') Back to Home
+main
+    form(action='/students/' + student.id + '/edit', method='post')
+      label(for='name') Name
+      input(type='text' name='name' value=student.name required)
+
+      label(for='age') Age
+      input(type='number' name='age' value=student.age required)
+
+      label(for='id') ID
+      input(type='number' name='id' value=student.id required)
+
+      label(for='score') Score
+      input(type='number' name='score' value=student.score required)
+      nav
+      button(type='submit') Edit Student
+
+    form(action='/students/' + student.id + '/delete', method='post')
+      input(type='hidden' name='id' value=student.id)
+      button(type='submit') Delete Student
+
