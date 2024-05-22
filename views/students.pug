@@ -1,13 +1,12 @@
 html
   head
-    title= 'Profile'
-    //- link(rel='stylesheet', type='text/css', href='/static/style.css')
+    title Students
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css')
-    
+
   body
-  nav 
-      h1 Student Profile
-  main 
+    nav 
+      h1 Student Management
+    main
       form(action='/add', method='post')      
         label(for='name') Name
         input(type='text' name='name' required)
@@ -18,17 +17,22 @@ html
         label(for='id') ID
         input(type='number' name='id' required)
 
-        label(for='score') Score
-        input(type='number' name='score' required)
+        each subject, index in ['Math', 'Science', 'History', 'Art']
+          label(for='grades' + index)= subject
+          input(type='number' name='grades[]' required)
+        
         button(type='submit') Add Student
-      h2   Students Table
+
+      h2 Students Table
       table
         thead
           tr
             th Name
             th ID
             th Age
-            th Score
+            each subject in ['Math', 'Science', 'History', 'Art']
+              th= subject
+
         tbody
           each s in students
             tr
@@ -36,4 +40,5 @@ html
                 a(href='/students/'+s.id)= s.name
               td= s.id
               td= s.age
-              td= s.score
+              each grade in s.grades
+                td= grade
