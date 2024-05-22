@@ -49,7 +49,7 @@ let db = new sqlite3.Database(__dirname + '/studentsdb.db', (err) => {
 //     });
 // });
 
-// الرابط لإضافة طالب جديد
+// الرابط لإضافة ط
 app.post('/add', [
     check('name').isLength({ min: 1 }),
     check('age').isNumeric(),
